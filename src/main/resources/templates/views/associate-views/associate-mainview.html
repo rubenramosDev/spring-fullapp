@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout/layout :: head"></head>
+<body>
+
+<header th:replace="layout/layout :: header"></header>
+
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <h3 th:text="${titulo}"></h3>
+
+            <table>
+                <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Last name</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Speciality</th>
+                    <th>Description</th>
+                    <th>Image</th>
+                    <th>Editar</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="associate: ${associates}">
+                    <td th:text="${associate.getPerson().getName()}"></td>
+                    <td th:text="${associate.getPerson().getLastName()}"></td>
+                    <td th:text="${associate.getPerson().getEmail()}"></td>
+                    <td th:text="${associate.getPerson().getPhone()}"></td>
+                    <td th:text="${associate.speciality}"></td>
+                    <td th:text="${associate.description}"></td>
+                    <td th:text="${associate.imageUrl}"></td>
+                    <td><a th:href="@{/form/} + ${associate.idAssociate}">Editar</a></td>
+                    <td><a th:href="@{/delete/} + ${associate.idAssociate}">Eliminar</a></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<footer th:replace="layout/layout :: footer"></footer>
+</body>
+</html>

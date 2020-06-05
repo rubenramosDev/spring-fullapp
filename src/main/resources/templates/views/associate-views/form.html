@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout/layout :: head"></head>
+<body>
+
+<h2 th:text="${titulo}"></h2>
+
+<form th:action="@{/associate/form}" th:object="${associate}" method="post">
+    <table>
+        <tr>
+            <td>Name</td>
+            <td><input type="text" th:field="*{person.name}"/></td>
+        </tr>
+        <tr>
+            <td>Last name</td>
+            <td><input type="text" th:field="*{person.lastName}"/></td>
+        </tr>
+        <tr>
+            <td>Email</td>
+            <td><input type="email" th:field="*{person.email}"/></td>
+        </tr>
+        <tr>
+            <td>Phone</td>
+            <td><input type="text" th:field="*{person.phone}"/></td>
+        </tr>
+        <tr>
+            <td>User Name</td>
+            <td><input type="text" th:field="*{user.userName}"/></td>
+        </tr>
+        <tr>
+            <td>Password</td>
+            <td><input type="text" th:field="*{user.password}"/></td>
+        </tr>
+        <tr>
+            <td>Speciality</td>
+            <td><input type="text" th:field="*{speciality}" th:errorclass="'form-control alert-danger'"/></td>
+            <small class="form-text text-danger" th:if="${#fields.hasErrors('speciality')}"
+                   th:errors="*{speciality}"></small>
+        </tr>
+        <tr>
+            <td>Description</td>
+            <td><input type="text" th:field="*{description}" th:errorclass="'form-control alert-danger'"/></td>
+            <small class="form-text text-danger" th:if="${#fields.hasErrors('description')}"
+                   th:errors="*{description}"></small>
+        </tr>
+        <tr>
+            <td>Image</td>
+            <td><input type="text" th:field="*{imageUrl}" th:errorclass="'form-control alert-danger'"/></td>
+            <small class="form-text text-danger" th:if="${#fields.hasErrors('imageUrl')}"
+                   th:errors="*{imageUrl}"></small>
+        </tr>
+    </table>
+    <tr>
+        <td>
+            <button type="submit">Enviar</button>
+        </td>
+    </tr>
+</form>
+
+<footer th:replace="layout/layout :: footer"></footer>
+</body>
+
+</html>
